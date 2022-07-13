@@ -1,16 +1,29 @@
 let gridContainer = document.getElementById('grid-container');
+const gameMode = document.getElementById('game-mode');
+const playBtn = document.getElementById('play-btn');
 
-for (let i = 1; i <= 100; i++) {
+let gridSelection;
 
-    let grid = document.createElement('div');
-    grid.append(i);
-    grid.classList.add('grid-main');
-    gridContainer.append(grid);
+playBtn.addEventListener('click', 
+function() {
+    gridSelection = gameMode.value;
 
-    grid.addEventListener('click', 
-    function() {
-        console.log(i);
+    console.log(gridSelection)
 
-        this.classList.toggle('grid-sec');
-    });
-}
+    gridContainer.innerHTML = '';
+
+    for (let gridNumber = 1; gridNumber <= gridSelection; gridNumber++) {
+
+        let grid = document.createElement('div');
+        grid.append(gridNumber);
+        grid.classList.add('grid-main');
+        gridContainer.append(grid);
+    
+        grid.addEventListener('click', 
+        function() {
+            console.log(gridNumber);
+    
+            this.classList.toggle('grid-sec');
+        });
+    }
+});
