@@ -7,7 +7,6 @@ let gridSelection;
 playBtn.addEventListener('click', 
 function() {
     gridSelection = gameMode.value;
-    console.log(gridSelection)
 
     gridContainer.innerHTML = '';
 
@@ -28,16 +27,12 @@ function() {
 
     let gridMain = document.querySelectorAll('.grid-main');
     const squareRoot = Math.sqrt(gridSelection);
-    console.log(Math.sqrt(gridSelection));
-    console.log(gridContainer.offsetHeight);
 
-    const gridSize = ((gridContainer.offsetHeight - 2) / squareRoot);
-    
-    console.log(gridSize)
-
+    const gridSizePerc = gridContainer.offsetHeight / squareRoot;
+    const gridSizeFinal = ((gridSizePerc * 100) / gridContainer.offsetHeight) + '%';
 
     for (let gridList = 0; gridList < gridMain.length; gridList++) {
-        gridMain[gridList].style.width = gridSize + 'px';
-        gridMain[gridList].style.height = gridSize + 'px';
+        gridMain[gridList].style.width = gridSizeFinal;
+        gridMain[gridList].style.height = gridSizeFinal;
     }
 });
